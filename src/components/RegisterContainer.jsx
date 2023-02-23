@@ -1,49 +1,48 @@
-import { React, useState } from "react";
-
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
 import GoogleIcon from "../icons/icon_google.png";
 
-const LoginForm = () => {
-  const [inputValue, setinputValue] = useState("");
-  const [showPassField, setshowPassField] = useState(false);
+const RegisterContainer = () => {
+  const [fullName, setfullName] = useState("");
+  const [phoneEmail, setphoneEmail] = useState("");
+  const [showPass, setshowPass] = useState(false);
 
   const handleInputChange = (event) => {
     const value = event.target.value;
-    setinputValue(value);
-    setshowPassField(/^\S+@\S+\.\S+$/.test(value));
+    setphoneEmail(value);
+    setshowPass(/^\S+@\S+\.\S+$/.test(value));
     console.log(`VALUE: ${value}`);
   };
   return (
     <div className="flex flex-col rounded-2xl shadow-lg px-12 py-8 h-fit">
-      <p className="text-3xl font-bold mb-2">Login</p>
+      <p className="text-3xl font-bold mb-2">Register</p>
       <p className="text-base text-grey-color mb-8">
-        Get access to your Orders, Wishlist and Recommendations
+        Join now to access exclusive deals and seamless shopping.
       </p>
       <input
         type="text"
-        value={inputValue}
+        value={fullName}
+        onChange={(e) => setfullName(e.target.value)}
+        className="p-4 bg-light-blue rounded-lg mb-4 border text-sm"
+        placeholder="Full Name"
+      />
+      <input
+        type="text"
+        value={phoneEmail}
         onChange={handleInputChange}
-        className="p-4 bg-light-blue rounded-lg mb-6 border text-sm"
+        className="p-4 bg-light-blue rounded-lg mb-4 border text-sm"
         placeholder="Enter Email/Mobile Number"
       />
-      {showPassField && (
-        <div className="flex flex-col">
-          <input
-            type="password"
-            className="p-4 bg-light-blue rounded-lg mb-4 border text-sm"
-            placeholder="Password"
-          />
-          <Link
-            to="/forgot-password"
-            className="text-end mb-6 text-xs text-black-color font-bold"
-          >
-            Forgot password?
-          </Link>
-        </div>
+      {showPass && (
+        <input
+          type="password"
+          className="p-4 bg-light-blue rounded-lg mb-4 border text-sm"
+          placeholder="Password"
+        />
       )}
 
-      <Link to="/verify-otp" state={{ phone: inputValue }}>
+      <Link to="/verify-otp">
         <button className="bg-blue-color w-full text-white font-bold rounded-lg py-3 px-7 mb-4">
           Request OTP
         </button>
@@ -72,13 +71,13 @@ const LoginForm = () => {
         .
       </p>
       <p className="text-base text-black-color text-center">
-        New to Smart Shopping?{" "}
-        <Link to="/register" className="anchor-texts-lg">
-          Create an account
+        Already have an account?{" "}
+        <Link to="/login" className="anchor-texts-lg">
+          Login
         </Link>
       </p>
     </div>
   );
 };
 
-export default LoginForm;
+export default RegisterContainer;

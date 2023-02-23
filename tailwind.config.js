@@ -6,8 +6,8 @@ module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
-      fontsize: {
-        "3xl": "32px",
+      fontSize: {
+        '3xl': '2rem',
       },
       colors: {
         "grey-color": "#6B7280",

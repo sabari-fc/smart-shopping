@@ -6,7 +6,6 @@
     src: url(./fonts/Satoshi-Regular.otf);
 }
 
-
 @layer components {
     .anchor-texts {
         @apply text-blue-color text-sm underline
