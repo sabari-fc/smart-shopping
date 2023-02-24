@@ -43,7 +43,7 @@ const LoginForm = () => {
         </div>
       )}
 
-      <Link to="/verify-otp" state={{ phone: inputValue }}>
+      <Link to="/verify-otp" state={{ phone: inputValue, verifyType: 1 }}>
         <button className="bg-blue-color w-full text-white font-bold rounded-lg py-3 px-7 mb-4">
           Request OTP
         </button>

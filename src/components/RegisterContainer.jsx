@@ -42,9 +42,12 @@ const RegisterContainer = () => {
         />
       )}
 
-      <Link to="/verify-otp">
+      <Link
+        to={showPass ? "/account-created" : "/verify-otp"}
+        state={{ phone: phoneEmail, verifyType: 2 }}
+      >
         <button className="bg-blue-color w-full text-white font-bold rounded-lg py-3 px-7 mb-4">
-          Request OTP
+          {showPass ? "Create Account" : "Request OTP"}
         </button>
       </Link>
 

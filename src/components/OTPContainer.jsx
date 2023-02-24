@@ -1,10 +1,15 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 import OtpTextField from "./OtpTextField";
 import ClickableText from "./ClickableText";
 
-const OTPContainer = ({ phone }) => {
+const OTPContainer = () => {
+  const loc = useLocation();
+
+  const phone = loc.state?.phone;
+  const type = loc.state?.verifyType;
+
   return (
     <div className="flex flex-col justify-between rounded-2xl h-fit shadow-lg px-12 py-8 gap-[20vh]">
       <div>
@@ -17,13 +22,13 @@ const OTPContainer = ({ phone }) => {
           </Link>
         </span>
         <OtpTextField />
-        <Link to="/">
+        <Link to={type === 1 ? "/" : "/account-created"}>
           <button className="bg-blue-color w-full text-white font-bold rounded-lg py-3 px-7 mb-8">
             Verify OTP
           </button>
         </Link>
         <span className="text-base text-grey-color mb-8">
-          Not received your code? {" "}
+          Not received your code?{" "}
           <ClickableText text="Resend Code" onClick={() => {}} />
         </span>
       </div>
